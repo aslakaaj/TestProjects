@@ -1,8 +1,9 @@
 import urllib.request
 from bs4 import BeautifulSoup
 
-importedUrl = r"https://www.shopify.com/blog/motivational-quotes"
-exportPath = r"C:\Users\Eier\OneDrive\Koding\PrøveProsjekt\quotes.txt"
+importedUrl = input("Enter an URL to scrape \n")
+exportPath = input("Enter an export file path: \n")
+typeToScrape = input("What HTML element will you scrape for? \n")
 
 urllib.request.urlretrieve(importedUrl, exportPath)
 
@@ -12,8 +13,8 @@ soup = BeautifulSoup(contents, "html.parser")
 
 f = open(r"quotes.txt", "w", encoding="utf-8")
 
-for data in soup.find_all("li"):
+for data in soup.find_all(typeToScrape):
     sum = data.get_text()
-    f.writelines("\"" + sum + "\""+ ", \n")
+    f.writelines(sum + "\n")
 
 f.close

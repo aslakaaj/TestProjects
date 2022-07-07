@@ -1,10 +1,16 @@
+import random
 from plyer import notification
 
-myTitle = "This is a test!"
-myMsg = "HELLO WORLD!"
+My_Title = "Motivational quote of the day"
+
+file = open(r"C:\Users\Eier\OneDrive\Koding\PrøveProsjekt\Python_MotivationPopup\quotes.txt", "r", encoding="mbcs" )
+lines = file.readlines()
+
+rndNum = random.randint(0, len(lines) - 1)
+myMsg = lines[rndNum]
 
 notification.notify(
-        title = myTitle,
+        title = My_Title,
         message = myMsg,
         timeout = 10,
         toast = False,
